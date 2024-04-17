@@ -9,6 +9,11 @@ import 'package:islamic_deen/core/permission/location_permission/data/repository
 import 'package:islamic_deen/core/permission/location_permission/domain/repository/location_permission_repository.dart';
 import 'package:islamic_deen/core/permission/location_permission/domain/usecase/location_permission_usecase.dart';
 import 'package:islamic_deen/core/permission/location_permission/presentation/bloc/location_permission_bloc.dart';
+import 'package:islamic_deen/features/namaz/data/datasource/remote/namaz_remote_datasource.dart';
+import 'package:islamic_deen/features/namaz/data/repository/namaz_repository_imp.dart';
+import 'package:islamic_deen/features/namaz/domain/repository/namaz_repository.dart';
+import 'package:islamic_deen/features/namaz/domain/usecase/namaz_timing_usecase.dart';
+import 'package:islamic_deen/features/namaz/presentation/bloc/namaz_bloc.dart';
 import 'package:islamic_deen/features/splash/data/data_source.dart/remote/splash_remote_datasource.dart';
 import 'package:islamic_deen/features/splash/data/repository/splash_repository_impl.dart';
 import 'package:islamic_deen/features/splash/domain/repository/splash_repository.dart';
@@ -21,6 +26,7 @@ Future<void> injectDependencies() async {
   _initSplash();
   _initLocationPermission();
   _initPlacemark();
+  _namazTimingsInit();
 }
 
 _initSplash() {
@@ -70,5 +76,21 @@ _initPlacemark() {
     )
     ..registerLazySingleton<PlacemarkBloc>(
       () => PlacemarkBloc(placemarksUsecase: serviceLocatior()),
+    );
+}
+
+_namazTimingsInit() {
+  serviceLocatior
+    ..registerFactory<NamazRemoteDatasource>(
+      () => NamazRemoteDatasourceImpl(),
+    )
+    ..registerFactory<NamazRepository>(
+      () => NamazRepositoryImpl(namazRemoteDatasource: serviceLocatior()),
+    )
+    ..registerFactory<NamazTimingUsecase>(
+      () => NamazTimingUsecase(namazRepository: serviceLocatior()),
+    )
+    ..registerLazySingleton<NamazBloc>(
+      () => NamazBloc(namazTimingUsecase: serviceLocatior()),
     );
 }

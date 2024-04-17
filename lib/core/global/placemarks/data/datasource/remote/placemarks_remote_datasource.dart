@@ -16,7 +16,6 @@ final class PlacemarksRemoteDatasourceImpl
       );
       List<Placemark> placemarks =
           await placemarkFromCoordinates(position.latitude, position.longitude);
-
       return placemarks;
     } on ServerExcception catch (e) {
       throw ServerExcception(message: e.message);

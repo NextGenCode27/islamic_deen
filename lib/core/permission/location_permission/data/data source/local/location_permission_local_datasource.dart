@@ -15,7 +15,7 @@ class LocationPermissionLocalDatasourceImpl
         await permission.request();
       }
       if (await permission.isPermanentlyDenied) {
-        return openAppSettings();
+        return await openAppSettings();
       }
       return permission.isGranted;
     } on ServerExcception catch (e) {

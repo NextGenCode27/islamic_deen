@@ -4,7 +4,6 @@ import 'package:islamic_deen/core/global/placemarks/presentation/bloc/placemark_
 import 'package:islamic_deen/core/permission/location_permission/presentation/bloc/location_permission_bloc.dart';
 import 'package:islamic_deen/core/permission/location_permission/presentation/views/location_view.dart';
 import 'package:islamic_deen/core/style/theme/scaffold_background.dart';
-import 'package:islamic_deen/features/home/presentation/views/home_view.dart';
 import 'package:islamic_deen/features/namaz/presentation/veiws/namaz_view.dart';
 import 'package:islamic_deen/features/splash/presentation/bloc/splash_bloc.dart';
 

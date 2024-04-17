@@ -18,12 +18,12 @@ class HomeView extends StatelessWidget {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('${state.placemark[0].locality}'),
-                    Text('${state.placemark[0].country}'),
+                    Text(state.placemark[0].locality.toString()),
+                    Text(state.placemark[0].country.toString()),
                   ],
                 );
               }
-              return const SizedBox();
+              return const Text('Home View');
             },
           ),
         ),

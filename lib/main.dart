@@ -5,6 +5,7 @@ import 'package:islamic_deen/core/global/placemarks/presentation/bloc/placemark_
 import 'package:islamic_deen/core/permission/location_permission/presentation/bloc/location_permission_bloc.dart';
 import 'package:islamic_deen/core/style/theme/dark_theme.dart';
 import 'package:islamic_deen/core/style/theme/light_theme.dart';
+import 'package:islamic_deen/features/namaz/presentation/bloc/namaz_bloc.dart';
 import 'package:islamic_deen/features/splash/presentation/bloc/splash_bloc.dart';
 import 'package:islamic_deen/features/splash/presentation/views/splash_view.dart';
 import 'package:islamic_deen/inject_dependencies.dart';
@@ -23,6 +24,9 @@ void main() async {
         ),
         BlocProvider(
           create: (context) => serviceLocatior<PlacemarkBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => serviceLocatior<NamazBloc>(),
         ),
       ],
       child: const MyApp(),
